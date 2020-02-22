@@ -9,8 +9,8 @@ body{
 
 	margin-left: 380px;
 	margin-top: 37px;
-	width: 600px; 
-	height: 600px;
+	width: 450px; 
+	height: 450px;
 	background-color: #f8f9f9;
 	box-shadow: 3px 3px 3px #aed6f1;
 	
@@ -18,13 +18,50 @@ body{
 	overflow: hidden;
 }
 
+#preview {
+	z-index: 1;
+	position: fixed;
+	top: 0;
+
+	margin-left: 780px;
+	margin-top: 37px;
+	width: 450px; 
+	height: 450px;
+	background-color: #f8f9f9;
+	box-shadow: 3px 3px 3px #aed6f1;
+	
+	font-size: 0;
+	overflow: hidden;
+}
+
+#keys {
+	margin-left: 980px;
+	width: 100px;
+	height: 100px;
+	display: block;
+	background-color: black;
+	overflow: hidden;
+}
+
+canvas {
+	width: 100px;
+	height: 100px;
+}
+
 .content {
 	vertical-align: top;
-	margin: 0 auto;
+	margin-top: 0;
+	margin-bottom: 0;
 	display: inline-block;
 	font-size: 0;
 	line-height: 0;
 	background-color: #f8f9f9;
+}
+
+.keyframe {
+	display: inline-block;
+	margin-top: 7%;
+	margin-right: 3%;
 }
 
 .nav button{
