@@ -2,7 +2,7 @@ body{
 	background-color: #3498db;
 }
 
-#container {
+.container {
 	z-index: 1;
 	position: fixed;
 	top: 0;
@@ -34,18 +34,18 @@ body{
 	overflow: hidden;
 }
 
-#keys {
+#key {
 	margin-left: 980px;
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 	display: block;
 	background-color: black;
 	overflow: hidden;
 }
 
 canvas {
-	width: 100px;
-	height: 100px;
+	width: 150px;
+	height: 150px;
 }
 
 .content {

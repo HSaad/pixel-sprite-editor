@@ -1,8 +1,13 @@
-const container = document.querySelector('#container');
-const key = document.querySelector('#keys');
+var color = "black";
+var keyFrameNum = 1;
+var gridNum = 8;
 
-createGrid(8); //initial grid
+const containers = document.querySelector('#containers');
+var container = document.querySelector('#container');
+const keys = document.querySelector('#keys');
+var key = document.querySelector('#key');
 
+createGrid(gridNum, container); //initial grid
 draw();
 
 const clearButton = document.querySelector('#clear');
@@ -12,7 +17,8 @@ const pencilButton = document.querySelector('#pencil');
 const eraserButton = document.querySelector('#eraser');
 const fillButton = document.querySelector('#fill');
 const generateButton = document.querySelector('#newGrid');
-var color = "black";
+
+const addKeyButton = document.querySelector('#addKey');
 
 generateButton.addEventListener('click', (e)=>{
 	deleteGrid();
@@ -20,10 +26,11 @@ generateButton.addEventListener('click', (e)=>{
 	if(isNaN(num) || num > 64){
 		alert("Please Enter a Number Less Than 64");
 		document.querySelector('input').value = "8";
-		createGrid(8);
+		createGrid(gridNum, container);
 		draw("black");
 	}else{
-		createGrid(num);
+		createGrid(num, container);
+		gridNum = num;
 		draw("black");
 	}
 });
@@ -80,6 +87,24 @@ pencilButton.addEventListener('click', (e)=>{
 	})
 });
 
+addKeyButton.addEventListener('click', (e) =>{
+	keyFrameNum++; //TO DO: add limit 10 key frames
+
+	//create container
+	const con = document.createElement('div');
+	con.id = `container${keyFrameNum}`;
+	con.classList.add('container');
+	containers.appendChild(con);	
+	
+	//create grid
+	createGrid(8, con);
+
+	//create keyframe
+	const keyframe = document.createElement('div');
+	keyframe.id = `key${keyFrameNum}`;
+	keys.appendChild(keyframe);	
+});
+
 function getRandomColor() {
   let letters = '0123456789ABCDEF';
   let color = '#';
@@ -104,20 +129,20 @@ function draw(colorName){
 	displayKeyFrames();
 }
 
-function createGrid(num){
+function createGrid(num, contain){
 	if (num == undefined) return;
 	for(let i = 0; i < num; i++){
-		createRow(num);
+		createRow(num, contain);
 	}
 }
 
-function createRow(num){
+function createRow(num, contain){
 	let width = 450 / num;
 	for(let i = 0; i < num; i++){
 		const content = document.createElement('div');
 		content.classList.add('content');
 		content.style.cssText = `width: ${width}px; height: ${width}px`;
-		container.appendChild(content);
+		contain.appendChild(content);
 	}
 }
 
@@ -129,12 +154,12 @@ function deleteGrid(){
 
 function displayKeyFrames(){
 	var element = $("#container"); // global variable
-
 	var getCanvas; // global variable
+
 	  $("#container").on('click', function () {
          html2canvas(element, {
          onrendered: function (canvas) {
-                $("#keys").html(canvas);
+                $("#key").html(canvas);
                 getCanvas = canvas;
              }
          });
