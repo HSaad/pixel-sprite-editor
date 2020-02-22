@@ -20,6 +20,8 @@ const generateButton = document.querySelector('#newGrid');
 
 const addKeyButton = document.querySelector('#addKey');
 
+const playButton = document.querySelector('#play');
+
 generateButton.addEventListener('click', (e)=>{
 	deleteGrid();
 	let num = +document.querySelector('input').value;
@@ -98,11 +100,38 @@ addKeyButton.addEventListener('click', (e) =>{
 	
 	//create grid
 	createGrid(8, con);
+	draw();
 
 	//create keyframe
 	const keyframe = document.createElement('div');
-	keyframe.id = `key${keyFrameNum}`;
+	keyframe.classList.add('key');
 	keys.appendChild(keyframe);	
+
+	displayKeyFrame(con, keyframe, keyFrameNum);
+});
+
+playButton.addEventListener('click', (e) => {
+	var preview = document.getElementById("preview");
+	var canvas = document.getElementById("key1");
+  var preview = document.getElementById("preview");
+  var image = new Image();
+  image.src = canvas.toDataURL("image/png");
+	$(preview).html(image);
+
+  var i = 1;
+  var id = setInterval(frame, 100);
+  function frame() {
+    if (i == keyFrameNum) {
+      clearInterval(id);
+    } else {
+      i++;
+
+    	var canvas = document.getElementById(`key${i}`);
+  		image.src = canvas.toDataURL("image/png");
+			$(preview).html(image);
+    }
+  }
+
 });
 
 function getRandomColor() {
@@ -120,7 +149,7 @@ function draw(colorName){
 
 		square.addEventListener('click', (e) =>{
 			if(colorName == undefined){
-				square.style.backgroundColor = 'black';
+				square.style.backgroundColor = 'black'
 			}else{
 				square.style.backgroundColor = colorName;
 			}
@@ -153,12 +182,13 @@ function deleteGrid(){
 }
 
 function displayKeyFrames(){
-	var element = $("#container"); // global variable
+	var element = container;//$("#container"); // global variable
 	var getCanvas; // global variable
 
-	  $("#container").on('click', function () {
+	  $(container).on('click', function () {
          html2canvas(element, {
          onrendered: function (canvas) {
+         				canvas.id = "key1";
                 $("#key").html(canvas);
                 getCanvas = canvas;
              }
@@ -166,4 +196,18 @@ function displayKeyFrames(){
     });
 }
 
+function displayKeyFrame(con, key, num){
+	var element = con;//$("#container"); // global variable
+	var getCanvas; // global variable
+
+	  $(con).on('click', function () {
+         html2canvas(element, {
+         onrendered: function (canvas) {
+         				canvas.id = `key${num}`;
+                $(key).html(canvas);
+                getCanvas = canvas;
+             }
+         });
+    });
+}
 
