@@ -12,7 +12,6 @@ draw();
 
 const clearButton = document.querySelector('#clear');
 const penButton = document.querySelector('#pen');
-const randomButton = document.querySelector('#random');
 const rainbowButton = document.querySelector('#rainbow');
 const pencilButton = document.querySelector('#pencil');
 const eraserButton = document.querySelector('#eraser');
@@ -40,7 +39,6 @@ generateButton.addEventListener('click', (e)=>{
 });
 
 colorButton.addEventListener('change', (e)=>{
-	//let num = document.querySelector('gridNum').value;
 	color = document.querySelector('#colorpicker').value;
 	draw(color);
 });
@@ -67,12 +65,6 @@ eraserButton.addEventListener('click', (e) =>{
 
 penButton.addEventListener('click', (e) =>{
 	draw(color);
-});
-
-randomButton.addEventListener('click', (e)=>{
-	let randomColor = getRandomColor();
-	draw(randomColor);
-	color = JSON.parse(JSON.stringify(randomColor));
 });
 
 rainbowButton.addEventListener('click', (e) =>{
