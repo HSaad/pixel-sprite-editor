@@ -11,12 +11,14 @@ createGrid(gridNum, container); //initial grid
 draw();
 
 const clearButton = document.querySelector('#clear');
+const penButton = document.querySelector('#pen');
 const randomButton = document.querySelector('#random');
 const rainbowButton = document.querySelector('#rainbow');
 const pencilButton = document.querySelector('#pencil');
 const eraserButton = document.querySelector('#eraser');
 const fillButton = document.querySelector('#fill');
 const generateButton = document.querySelector('#newGrid');
+const colorButton = document.querySelector('#colorpicker');
 
 const addKeyButton = document.querySelector('#addKey');
 
@@ -24,7 +26,7 @@ const playButton = document.querySelector('#play');
 
 generateButton.addEventListener('click', (e)=>{
 	deleteGrid();
-	let num = +document.querySelector('input').value;
+	let num = +document.querySelector('#gridNum').value;
 	if(isNaN(num) || num > 64){
 		alert("Please Enter a Number Less Than 64");
 		document.querySelector('input').value = "8";
@@ -35,6 +37,12 @@ generateButton.addEventListener('click', (e)=>{
 		gridNum = num;
 		draw("black");
 	}
+});
+
+colorButton.addEventListener('change', (e)=>{
+	//let num = document.querySelector('gridNum').value;
+	color = document.querySelector('#colorpicker').value;
+	draw(color);
 });
 
 clearButton.addEventListener('click', (e) => {
@@ -55,6 +63,10 @@ fillButton.addEventListener('click', (e) => {
 
 eraserButton.addEventListener('click', (e) =>{
 	draw("#f8f9f9");
+});
+
+penButton.addEventListener('click', (e) =>{
+	draw(color);
 });
 
 randomButton.addEventListener('click', (e)=>{
@@ -99,7 +111,7 @@ addKeyButton.addEventListener('click', (e) =>{
 	containers.appendChild(con);	
 	
 	//create grid
-	createGrid(8, con);
+	createGrid(gridNum, con);
 	draw();
 
 	//create keyframe

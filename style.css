@@ -78,7 +78,7 @@ button:hover{
 
 input {
 	margin-left: 70px;
-	margin-top: 30px;
+	margin-top: 20px;
 	margin-bottom: 5px;
 	margin-right: 0;
 	padding-left: 10px;
@@ -135,4 +135,17 @@ input {
 #preview img {
 	height: 300px;
 	width: 300px;
+}
+
+#colorpicker{
+	display:block;
+	border: none;
+	background-color: transparent;
+	width: 50px;
+	height: 50px;
+	padding: 0;
+	margin-left: 75px;
+	margin-top: 10px;
+	margin-bottom: 0;
+	margin-right: 0;
 }
