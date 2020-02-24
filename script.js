@@ -3,12 +3,13 @@ var keyFrameNum = 1;
 var gridNum = 8;
 
 const containers = document.querySelector('#containers');
-var container = document.querySelector('#container');
+var container = document.querySelector('#container1');
 const keys = document.querySelector('#keys');
 var key = document.querySelector('#key');
 
 createGrid(gridNum, container); //initial grid
 draw();
+displayKeyFrames();
 
 const clearButton = document.querySelector('#clear');
 const penButton = document.querySelector('#pen');
@@ -20,6 +21,7 @@ const generateButton = document.querySelector('#newGrid');
 const colorButton = document.querySelector('#colorpicker');
 
 const addKeyButton = document.querySelector('#addKey');
+const copyKeyButton = document.querySelector('#copyKey');
 
 const playButton = document.querySelector('#play');
 const downloadButton = document.querySelector('#download');
@@ -95,7 +97,7 @@ pencilButton.addEventListener('click', (e)=>{
 });
 
 addKeyButton.addEventListener('click', (e) =>{
-	keyFrameNum++; //TO DO: add limit 10 key frames
+	keyFrameNum++; //TO DO: add limit to key frames
 
 	//create container
 	const con = document.createElement('div');
@@ -116,10 +118,30 @@ addKeyButton.addEventListener('click', (e) =>{
 	displayKeyFrame(con, keyframe, keyFrameNum);
 });
 
+copyKeyButton.addEventListener('click', (e) =>{
+	//clone previous container
+	var con = document.getElementById(`container${keyFrameNum}`).cloneNode(true);
+	
+	keyFrameNum++; //TO DO: add limit 10 key frames
+
+	//create container
+	con.id = `container${keyFrameNum}`;
+	containers.appendChild(con);
+	
+	draw();
+
+	//create keyframe
+	const keyframe = document.createElement('a');
+	keyframe.classList.add('key');
+	keyframe.href = `#container${keyFrameNum}`;
+	keys.appendChild(keyframe);	
+
+	displayKeyFrame(con, keyframe, keyFrameNum);
+});
+
 playButton.addEventListener('click', (e) => {
-	var preview = document.getElementById("preview");
-	var canvas = document.getElementById("key1");
   var preview = document.getElementById("preview");
+  var canvas = document.getElementById("key1");
   var image = new Image();
   image.src = canvas.toDataURL("image/png");
 	$(preview).html(image);
@@ -186,7 +208,6 @@ function draw(colorName){
 			}
 		})
 	});
-	displayKeyFrames();
 }
 
 function createGrid(num, contain){
@@ -227,7 +248,6 @@ function displayKeyFrames(){
          });
     });
 }
-
 function displayKeyFrame(con, key, num){
 	var element = con;//$("#container"); // global variable
 	var getCanvas; // global variable
