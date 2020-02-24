@@ -22,6 +22,7 @@ const colorButton = document.querySelector('#colorpicker');
 const addKeyButton = document.querySelector('#addKey');
 
 const playButton = document.querySelector('#play');
+const downloadButton = document.querySelector('#download');
 
 generateButton.addEventListener('click', (e)=>{
 	deleteGrid();
@@ -107,8 +108,9 @@ addKeyButton.addEventListener('click', (e) =>{
 	draw();
 
 	//create keyframe
-	const keyframe = document.createElement('div');
+	const keyframe = document.createElement('a');
 	keyframe.classList.add('key');
+	keyframe.href = `#container${keyFrameNum}`;
 	keys.appendChild(keyframe);	
 
 	displayKeyFrame(con, keyframe, keyFrameNum);
@@ -137,6 +139,31 @@ playButton.addEventListener('click', (e) => {
   }
 
 });
+
+downloadButton.addEventListener('click', (e) => {
+	var imgs = keyFrameList();
+
+	var ag = new Animated_GIF(); 
+	ag.setSize(400, 400);
+	ag.setDelay(150);
+
+	for(var i = 0; i < imgs.length; i++) {
+    ag.addFrame(imgs[i]);
+	}
+
+	var link = document.createElement('a');
+	link.download = 'pixel-download.gif';
+// This is asynchronous, rendered with WebWorkers
+	ag.getBase64GIF(function(image) {
+		//Alternative for downloading image
+		//var url = image.replace(/^data:image\/[^;]+/, 'data:application/octet-stream');
+		//window.open(url, 'Download');
+    link.href = image;
+    link.click();
+	});
+});
+
+
 
 function getRandomColor() {
   let letters = '0123456789ABCDEF';
@@ -215,3 +242,11 @@ function displayKeyFrame(con, key, num){
     });
 }
 
+function keyFrameList(){
+	var keyFrameList = [];
+	for (var i = 1; i <= keyFrameNum; i++) {
+		var canvas = document.getElementById(`key${i}`);
+		keyFrameList.push(canvas);
+	}
+	return keyFrameList;
+}

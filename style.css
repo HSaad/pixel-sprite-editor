@@ -149,3 +149,10 @@ input {
 	margin-bottom: 0;
 	margin-right: 0;
 }
+
+a {
+	display: block;
+	background-color: white;
+	height: 50px;
+	width: 50px;
+}
