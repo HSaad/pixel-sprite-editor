@@ -192,16 +192,17 @@ function draw(colorName){
 function createGrid(num, contain){
 	if (num == undefined) return;
 	for(let i = 0; i < num; i++){
-		createRow(num, contain);
+		createRow(num, contain, true);
 	}
 }
 
-function createRow(num, contain){
-	let width = 450 / num;
+function createRow(num, contain, hasBorder){
+	let width = (450 / num) - 1;
 	for(let i = 0; i < num; i++){
 		const content = document.createElement('div');
 		content.classList.add('content');
 		content.style.cssText = `width: ${width}px; height: ${width}px`;
+		content.style.border = '0.5px solid #E1E1E1';
 		contain.appendChild(content);
 	}
 }
