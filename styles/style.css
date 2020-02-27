@@ -1,5 +1,5 @@
 body{
-	background-color: #3498db;
+	background-color: #1c1c1c;
 }
 
 .container {
@@ -98,11 +98,18 @@ input {
 
 .nav h1{
 	margin-top: 50px;
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 40px;
+	font-family: 'Righteous', Helvetica, Arial, sans-serif;
+	font-size: 60px;
 	color: white;
-	margin-left: 80px;
+	margin-left: 5px;
 	margin-bottom: 10px;
+	display: inline-block
+}
+
+.nav img {
+	height: 50px;
+	width: 50px;
+	margin-left: 80px;
 }
 
 .nav {
