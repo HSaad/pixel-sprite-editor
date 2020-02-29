@@ -61,7 +61,7 @@ canvas {
 	margin-bottom: 5px;
 	padding: 10px 10px 10px 10px;
 	height: 40px;
-	width: 170px;
+	width: 40px;
 	border-radius: 5px 10px 10px;
 	border-style: none;
 	color: white;
@@ -161,4 +161,46 @@ a {
 	background-color: white;
 	height: 50px;
 	width: 50px;
+}
+
+#clear {
+	background: url('clear_icon.png');
+	background-repeat: no-repeat;
+	background-size: 30px;
+	background-position: center;
+}
+
+#pen {
+	background: url('pen_icon.png');
+	background-repeat: no-repeat;
+	background-size: 30px;
+	background-position: center;
+}
+
+#rainbow {
+	background: url('rainbow_icon.png');
+	background-repeat: no-repeat;
+	background-size: 30px;
+	background-position: center;
+}
+
+#pencil {
+	background: url('pencil_icon.png');
+	background-repeat: no-repeat;
+	background-size: 30px;
+	background-position: center;
+}
+
+#eraser {
+	background: url('eraser_icon.png');
+	background-repeat: no-repeat;
+	background-size: 30px;
+	background-position: center;
+}
+
+#fill {
+	background: url('fill_icon.png');
+	background-repeat: no-repeat;
+	background-size: 30px;
+	background-position: center;
 }
