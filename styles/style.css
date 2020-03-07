@@ -5,14 +5,15 @@ body{
 .container {
 	z-index: 1;
 	top: 0;
-
+	line-height: 0;
 	margin-left: 380px;
 	margin-top: 37px;
-	width: 450px; 
-	height: 450px;
+	width: 451px; 
+	height: 451px;
 	background-color: #f8f9f9;
 	box-shadow: 3px 3px 3px #aed6f1;
-	
+	border: solid #E1E1E1;
+	border-width: 0 1px 1px 0;
 	font-size: 0;
 	overflow: hidden;
 }
@@ -47,6 +48,8 @@ canvas {
 	font-size: 0;
 	line-height: 0;
 	background-color: #f8f9f9;
+	border: solid #E1E1E1;
+	border-width: 1px 0 0 1px;
 }
 
 .keyframe {

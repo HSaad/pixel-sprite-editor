@@ -223,7 +223,6 @@ function createRow(num, contain, hasBorder){
 		const content = document.createElement('div');
 		content.classList.add('content');
 		content.style.cssText = `width: ${width}px; height: ${width}px`;
-		content.style.border = '0.5px solid #E1E1E1';
 		contain.appendChild(content);
 	}
 }
