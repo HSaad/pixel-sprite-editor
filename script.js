@@ -141,7 +141,7 @@ copyKeyButton.addEventListener('click', (e) =>{
 
 playButton.addEventListener('click', (e) => {
   var preview = document.getElementById("preview");
-  var canvas = document.getElementById("key1");
+  var canvas = document.getElementById("key");
   var image = new Image();
   image.src = canvas.toDataURL("image/png");
 	$(preview).html(image);
