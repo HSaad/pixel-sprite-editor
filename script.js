@@ -141,7 +141,7 @@ copyKeyButton.addEventListener('click', (e) =>{
 
 playButton.addEventListener('click', (e) => {
   var preview = document.getElementById("preview");
-  var canvas = document.getElementById("key");
+  var canvas = document.getElementById("key1");
   var image = new Image();
   image.src = canvas.toDataURL("image/png");
 	$(preview).html(image);
@@ -240,7 +240,7 @@ function displayKeyFrames(){
 	  $(container).on('click', function () {
          html2canvas(element, {
          onrendered: function (canvas) {
-         				canvas.id = "key1";
+         		canvas.id = "key1";
                 $("#key").html(canvas);
                 getCanvas = canvas;
              }
